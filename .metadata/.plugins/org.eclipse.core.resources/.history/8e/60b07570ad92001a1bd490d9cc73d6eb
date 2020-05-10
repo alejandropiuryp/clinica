@@ -1,0 +1,15 @@
+<?php
+    session_start();
+	
+	require_once("gestionBD.php");
+	
+	if(isset($_SESSION["registro"])){
+		$nuevoUsuario = $_SESSION["registro"];
+		$_SESSION["registro"] = null;
+		$_SESSION["errores"] = null;
+	}else{
+		Header("Location: registro_usuario.php");
+	}
+	
+	$conexion = crearConexionBD();
+?>

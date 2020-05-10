@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <link href="css/exito_usuario.css" rel="stylesheet" type="text/css" media="all">
+  <title>Registro realizado con éxito </title>
+</head>
+
+<body>
+	
+	<div class = "centrado">
+		<h1>Bienvenido sdsdsdsdsd</h1>
+		<div >	
+			<a class="boton" href="consulta_libros.php">Aceptar</a>
+		</div>
+	</div>
+	
+		<h1>El usuario ya existe en la base de datos.</h1>
+		<div >	
+			 <a href="">Iniciar Sesión</a> 
+		</div>
+	
+</body>
+</html>
+<?php
+	cerrarConexionBD($conexion);
+?>

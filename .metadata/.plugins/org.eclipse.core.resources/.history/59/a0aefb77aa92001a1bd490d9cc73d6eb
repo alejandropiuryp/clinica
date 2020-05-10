@@ -1,0 +1,31 @@
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	font-family: 'Raleway', sans-serif;
+}
+
+.contenedor{
+	position:absolute;
+	top:50%;
+	transform: translateY(-50%);
+	width: 100%;
+	background: rgba(0,0,0,0.8);
+	padding: 0 20px;
+}
+
+.center{
+	
+	margin: auto auto;
+	padding: 30px;
+	
+	text-align: center;
+	width: 30%;
+}
+
+h2{
+	color:#97D0F3;
+	border-left: 10px solid #27A8F7;
+}

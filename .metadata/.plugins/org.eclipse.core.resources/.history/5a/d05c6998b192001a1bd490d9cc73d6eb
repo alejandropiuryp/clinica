@@ -1,0 +1,90 @@
+<?php
+    session_start();
+	
+	if(isset($_SESSION["registro"])){
+		$registro["nombre"] = $_REQUEST["nombre"];
+		$registro["apellidos"] = $_REQUEST["apellidos"];
+		$registro["dni"] = $_REQUEST["dni"];
+		$registro["edad"] = $_REQUEST["edad"];
+		$registro["tarjeta_sanitaria"] = $_REQUEST["tarjeta_sanitaria"];
+		$registro["contrasena"] = $_REQUEST["contrasena"];
+		$registro["contrasena2"] = $_REQUEST["contrasena2"];
+		$registro["fecha"] = $_REQUEST["fecha"];
+		$registro["email"] = $_REQUEST["email"];
+		$registro["telefono"] = $_REQUEST["telefono"];
+		$registro["domicilio"] = $_REQUEST["domicilio"];
+		
+		$_SESSION["registro"] = $registro;
+	}else{
+		Header("Location: registro_usuario.php");
+	}
+	
+	$errores = validarDatosUsuarios($registro);
+	
+	if(count($errores) > 0){
+		$_SESSION["errores"] = $errores;
+		Header("Location: registro_usuario.php");
+	}else{
+		Header("Location: exito_registro.php");
+	}
+	
+///////////////////////////////////////////////////////////
+// Validación en servidor del registro de usuario
+///////////////////////////////////////////////////////////
+
+function validarDatosUsuarios($registro){
+	$errores = array();
+	//Validación del nombre
+	if($registro["nombre"] == ""){
+		$errores[] = "<p>El nombre no puede estar vacío</p>";
+	}
+	//Validación de apellidos
+	if($registro["apellidos"] == ""){
+		$errores[] = "<p>El campo apellidos no puede estar vacío</p>";
+	}
+	//Validación del DNI
+	if($registro["dni"] == ""){
+		$errores[] = "<p>El DNI no puede estar vacío</p>";
+	}else if(!preg_match("/^\d{8}[a-zA-Z]$/", $registro["nif"])){
+		$errores[] = "<p>El NIF debe contener 8 números y una letra mayúscula: " . $registro["nif"]. "</p>";
+	}
+	//Validación de la edad
+	if($registro["edad"] == ""){
+		$errores[] = "<p>La edad no puede estar vacío</p>";
+	}else if($registro["edad"] < 0){
+		$errores[] = "<p>La edad no puede ser negativa: " . $registro["edad"] . "</p>";
+	}
+	//Validación de tarjeta sanitaria
+	if($registro["tarjeta_sanitaria"] == ""){
+		$errores[] = "<p>La tarjeta sanitaria no puede estar vacía</p>";
+	}else if(!preg_match("/[0-9]{9}/", $registro["tarjeta_sanitaria"])){
+		$errores[] = "<p>La tarjeta sanitaria no es correcta: " . $registro["tarjeta_sanitaria"] . "</p>";
+	}
+	//Validación de la contraseña
+	if(!isset($registro["contrasena"]) || strlen($registro["contrasena"]) < 8){
+		$errores [] = "<p>Contraseña no válida: debe tener al menos 8 caracteres</p>";
+	}else if(!preg_match("/[a-z]+/", $registro["contrasena"]) || 
+		!preg_match("/[A-Z]+/", $registro["contrasena"]) || !preg_match("/[0-9]+/", $registro["contrasena"])){
+		$errores[] = "<p>Contraseña no válida: debe contener letras mayúsculas y minúsculas y dígitos</p>";
+	}else if($registro["contrasena"] != $registro["contrasena2"]){
+		$errores[] = "<p>La confirmación de contraseña no coincide con la contraseña</p>";
+	}
+	// Validación de la email
+	if($registro["email"]==""){ 
+		$errores[] = "<p>El email no puede estar vacío</p>";
+	}else if(!filter_var($registro["email"], FILTER_VALIDATE_EMAIL)){
+		$errores[] = "<p>El email es incorrecto: " . $registro["email"]. "</p>";
+	}
+	// Validación del teléfono
+	if($registro["telefono"]==""){
+		$errores[] = "<p>El teléfono no puede estar vacío</p>";
+	}else if(!preg_match("/^[0-9]{9}$/", $registro["telefono"])){
+		$errores[] = "<p>El teléfono no es correcto</p>";
+	}
+	// Validación del domicilio
+	if($registro["domicilio"] == ""){
+		$errores[] = "<p>El domicilio no puede estar vacío</p>";
+	}
+	return $errores;
+}
+?>

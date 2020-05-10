@@ -1,0 +1,9 @@
+<?php
+    session_start();
+	
+	if(isset($_SESSION["registro"])){
+		$nuevoUsuario = $_SESSION["registro"];
+		$_SESSION["registro"] = null;
+		$_SESSION["errores"] = null;
+	}
+?>

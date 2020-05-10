@@ -1,0 +1,44 @@
+.centrado{
+	background: rgba(0,0,0,0.8);
+    margin: auto;
+    max-height: 200px;
+    max-width: 1000px;
+	padding: 30px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    text-align: center;
+    line-height: 40px;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	font-family: 'Raleway', sans-serif;
+}
+
+body{
+	background: url("../img/fondo-registro.jpg") no-repeat top center;
+	background-size: cover;
+	height: 100%;
+}
+
+h1{
+	font-size: 50px;
+}
+
+.boton{
+	color: white;
+	display: block;
+	margin: 5px auto auto auto;
+	background: #39b7dd;
+	padding: 15px;
+	cursor: pointer;
+	text-decoration: none;
+	width: 100px;
+}

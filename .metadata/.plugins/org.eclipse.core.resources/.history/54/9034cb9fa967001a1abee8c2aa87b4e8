@@ -1,0 +1,103 @@
+<?php
+//////////////////////////////////////////////////////// EJERCICIO 3
+if(isset($_REQUEST["nif"])){
+$nuevoUsuario["nif"] = $_REQUEST["nif"];
+$nuevoUsuario["nombre"] = $_REQUEST["nombre"];
+
+$nuevoUsuario["apellidos"] = $_REQUEST["apellidos"];
+$nuevoUsuario["perfil"] = $_REQUEST["perfil"];
+$nuevoUsuario["fechaNacimiento"] = $_REQUEST["fechaNacimiento"];
+$nuevoUsuario["email"] = $_REQUEST["email"];
+
+$nuevoUsuario["nick"] = $_REQUEST["nick"];
+$nuevoUsuario["pass"] = md5($_REQUEST["pass"]);
+$nuevoUsuario["confirmpass"] = md5($_REQUEST["confirmpass"]);
+$nuevoUsuario["generoLiterario"] = $_REQUEST["generoLiterario"];
+
+$nuevoUsuario["calle"] = $_REQUEST["calle"];
+$nuevoUsuario["provincia"] = $_REQUEST["provincia"];
+}else{
+	Header("location: alta_usuario.html");
+}
+//////////////////////////////////////////////////////// FIN EJERCICIO 3
+
+
+//////////////////////////////////////////////////////// EJERCICIO 2
+///////// A)
+$generosLiterarios=["CF" => "Ciencia Ficción", "NH" => "Novela Histórica",
+					"NN" => "Novela Negra", "NG" => "Novela Gráfica", "E" => "Ensayo",
+					"P" => "Poesía","B"=>"Biografías","T"=>"Terror","I"=>"Infantil",
+					"O"=>"Otro" ];
+
+///////// B)
+function getNombreGeneroLiterario($abreviatura)
+{
+	global $generosLiterarios;
+	if(isset($generosLiterarios[$abreviatura])){
+		return $generosLiterarios[$abreviatura];
+	}else{
+		return "Error. La abreviatura ".$abreviatura." no existe.";
+	}
+}
+
+///////// C)
+function getFechaFormateada($fecha){
+	return date("d/m/Y", strtotime($fecha));
+}
+
+//////////////////////////////////////////////////////// FIN EJERCICIO 2
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Gestión de biblioteca: Alta de Usuario</title>
+</head>
+
+<body>	
+	<main>
+
+<!--
+	Mensaje para confirmar alta de usuario
+-->
+
+		<h2>Usuario dado de alta con éxito con los siguientes datos:</h2>
+<!--
+					EJERCICIO 1	
+-->
+	<ul>
+		<li>NIF: <?php echo $nuevoUsuario["nif"]; ?></li>
+		<li>Nombre: <?php echo $nuevoUsuario["nombre"]; ?></li>
+		<li>Apellidos: <?php echo $nuevoUsuario["apellidos"]; ?></li>
+		<li>Perfil: <?php echo $nuevoUsuario["perfil"]; ?></li>
+		<li>Fecha de Nacimiento: <?php echo gefFechaFormateada($nuevoUsuario["fecha de nacimiento"]); ?></li>
+		<li>e-mail: <?php echo $nuevoUsuario["e-mail"]; ?></li>
+		<li>Nickname: <?php echo $nuevoUsuario["nickname"]; ?></li>
+		<li>Password: <?php echo $nuevoUsuario["password"]; ?></li>
+		<li>Confirmación de contraseña: <?php echo $nuevoUsuario["confirmpass"]; ?></li>
+		<li>Género literario favorito:
+			<ul><?php 
+					foreach($nuevoUsuario["generoLiterario"] as $genero){
+						echo "<li>". getNombreGeneroLiterario($genero). "<li>"; 
+					}
+			
+				?>
+			</ul>	
+		</li>
+		<li>Calle: <?php echo $nuevoUsuario["calle"]; ?></li>
+		<li>Provincia: <?php echo $nuevoUsuario["provincia"]; ?></li>
+	</ul>
+	
+	
+	
+	
+	
+	
+<!--
+					FIN EJERCICIO 1
+-->
+
+	</main>
+</body>
+</html>

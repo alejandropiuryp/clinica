@@ -1,0 +1,44 @@
+<?php
+    session_start();
+	
+	require_once("gestionBD.php");
+	require_once("gestionarUsuarios.php");
+	
+	if(isset($_SESSION["registro"])){
+		$nuevoUsuario = $_SESSION["registro"];
+		$_SESSION["registro"] = null;
+		$_SESSION["errores"] = null;
+	}else{
+		Header("Location: registro_usuario.php");
+	}
+	
+	$conexion = crearConexionBD();
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Registro realizado con éxito </title>
+</head>
+
+<body>
+	<?php if (alta_usuario($conexion, $nuevoUsuario)) { 
+				$_SESSION['login'] = $nuevoUsuario['email'];
+		
+	?>
+		<h1>Bienvenido <?php echo $nuevoUsuario["nombre"]; ?></h1>
+		<div >	
+			<a href="consulta_libros.php">Aceptar</a>
+		</div>
+	<?php } else{ ?>
+		<h1>El usuario ya existe en la base de datos.</h1>
+		<div >	
+			 <a href="">Iniciar Sesión</a> 
+		</div>
+	<?php } ?>
+</body>
+</html>
+<?php
+	cerrarConexionBD($conexion);
+?>

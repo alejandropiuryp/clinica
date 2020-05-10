@@ -1,0 +1,19 @@
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	font-family: 'Raleway', sans-serif;
+}
+
+.contenedor{
+	margin: 0 auto;
+	background: rgba(0,0,0,0.8);
+}
+
+.center{
+	margin: auto auto;
+	padding: 30px;
+	background: rgba(0,0,0,0.8);
+}

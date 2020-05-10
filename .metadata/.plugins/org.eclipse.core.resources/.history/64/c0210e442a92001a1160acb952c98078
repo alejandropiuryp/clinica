@@ -1,0 +1,191 @@
+var form = document.getElementById("registroUsuario");
+
+const nombre = document.getElementById("nombre");
+const apellidos = document.getElementById("apellidos");
+const fecha = document.getElementById("fecha");
+const edad = document.getElementById("edad");
+const dni = document.getElementById("dni");
+const tarjeta_sanitaria = document.getElementById("tarjeta_sanitaria");
+
+const email = document.getElementById("email");
+const pass = document.getElementById("contrasena");
+const pass2 = document.getElementById("contrasena2");
+const telefono = document.getElementById("telefono");
+const domicilio = document.getElementById("domicilio");
+
+const smallNombre = document.getElementById("smallNombre");
+const smallApellidos = document.getElementById("smallApellidos");
+const smallFecha = document.getElementById("smallFecha");
+const smallEdad = document.getElementById("smallEdad");
+const smallDni = document.getElementById("smallDni");
+const smallTarjeta = document.getElementById("smallTarjeta");
+const smallEmail = document.getElementById("smallEmail");
+const smallPass = document.getElementById("smallContrasena");
+const smallPass2 = document.getElementById("smallContrasena2");
+const smallTelefono = document.getElementById("smallTelefono");
+const smallDomicilio = document.getElementById("smallDomicilio");
+
+
+
+
+function validateForm(){
+	var noValidation = document.getElementById("registroUsuario").noValidate;
+	if(!noValidation){
+		var error1 = checkNombre();
+		var error2 = checkApellidos();
+		var error3 = checkDNI();
+		var error4 = checkEdad();
+		var error5 = checkTarjeta();
+		var error6 = checkEmail();
+		var error7 = checkPass();
+		var error8 = checkPass2();
+		return (error1.length == 0) && (error2.length == 0) && (error3.length == 0) && (error4.length == 0) && (error5.length == 0) && (error6.length == 0) && (error7.length == 0) && (error8.length == 0);
+	}else{
+		return true;
+	}
+}
+function checkNombre(){
+	const nombreValue = document.getElementById("nombre").value.trim();
+	if(nombreValue == ''){
+		errorFor(document.getElementById("nombre"), document.getElementById("smallNombre"), 'El nombre no puede estar vacío');
+		var error = "El nombre no puede estar vacío";
+	}else{
+		exitoFor(document.getElementById("nombre"),document.getElementById("smallNombre"));
+		var error = "";
+	}
+	return error;
+}
+
+function checkApellidos(){
+	const apellidosValue = document.getElementById("apellidos").value.trim();
+	if(apellidosValue == ''){
+		errorFor(document.getElementById("apellidos"), document.getElementById("smallApellidos"), 'El apellido no puede estar vacío');
+		var error = "El apellido no puede estar vacío";
+	}else{
+		exitoFor(document.getElementById("apellidos"),document.getElementById("smallApellidos"));
+		var error = "";
+	}
+	return error;
+}
+
+function checkDNI(){
+	const DNIvalue = document.getElementById("dni").value.trim();
+	var expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+	if(DNIvalue == ''){
+		errorFor(document.getElementById("dni"), document.getElementById("smallDni"), 'El DNI no puede estar vacío');
+		var error = "El DNI no puede estar vacío";
+	}else if(expresion_regular_dni.test(DNIvalue) == false){
+		errorFor(document.getElementById("dni"), document.getElementById("smallDni"), 'Introduce un DNI correcto');
+		var error = "DNI no correcto";
+	}else{
+		exitoFor(document.getElementById("dni"),document.getElementById("smallDni"));
+		var error = "";
+	}
+	return error;
+}
+
+function checkEdad(){
+	const edadValue = document.getElementById("edad").value.trim();
+	if(edadValue == ''){
+		errorFor(document.getElementById("edad"), document.getElementById("smallEdad"), 'La edad no puede estar vacía');
+		var error = "La edad no puede estar vacía";
+	}else if(edadValue < 0){
+		errorFor(document.getElementById("edad"), document.getElementById("smallEdad"), 'La edad no puede ser negativa');
+		var error = "La edad no puede ser negativa";
+	}else{
+		exitoFor(document.getElementById("edad"),document.getElementById("smallEdad"));
+		var error = "";
+	}
+	return error;
+}
+
+function checkTarjeta(){
+	const tarjetaValue = document.getElementById("tarjeta_sanitaria").value.trim();
+	var expresion_regular_tarjeta = /^\d{9}$/;
+	if(tarjetaValue == ''){
+		errorFor(document.getElementById("tarjeta_sanitaria"), document.getElementById("smallTarjeta"), 'La tarjeta sanitaria no puede estar vacía');
+		var error = "La tarjeta sanitaria no puede estar vacía";
+	}else if(expresion_regular_tarjeta.test(tarjetaValue) == false){
+		errorFor(document.getElementById("tarjeta_sanitaria"), document.getElementById("smallTarjeta"), 'Tarjeta sanitaria no válida');
+		var error = "Tarjeta sanitaria no válida";
+	}else{
+		exitoFor(document.getElementById("tarjeta_sanitaria"),document.getElementById("smallTarjeta"));
+		var error = "";
+	}
+	return error;
+}
+
+function checkEmail(){
+	const emailValue = document.getElementById("email").value.trim();
+	var expresion_regular_email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	if(emailValue == ''){
+		errorFor(document.getElementById("email"), document.getElementById("smallEmail"), 'El correo no puede estar vacío');
+		var error = "El correo no puede estar vacío";
+	}else if(expresion_regular_email.test(emailValue) == false){
+		errorFor(document.getElementById("email"), document.getElementById("smallEmail"), 'Introduce un correo válido');
+		var error = "Introduce un correo válido";
+	}else{
+		exitoFor(document.getElementById("email"),document.getElementById("smallEmail"));
+		var error = "";
+	}
+	return error;
+}
+
+function checkPass(){
+	const passValue = document.getElementById("contrasena").value.trim();
+	var expresion_regular_pass = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+	if(passValue == ''){
+		errorFor(document.getElementById("contrasena"), document.getElementById("smallContrasena"), 'La contraseña no puede estar vacía');
+		var error = "La contraseña no puede estar vacía";
+	}else if(expresion_regular_pass.test(passValue) == false){
+		errorFor(document.getElementById("contrasena"), document.getElementById("smallContrasena"), 'Debe contener al menos 8 caracteres, una letra mayuscula, una letra minúscula y al menos un dígito');
+		var error = "Introduce una contraseña válida";
+	}else{
+		exitoFor(document.getElementById("contrasena"),document.getElementById("smallContrasena"));
+		var error = "";
+	}
+	return error;
+}
+
+function checkPass2(){
+	const passValue = document.getElementById("contrasena").value.trim();
+	const pass2Value = document.getElementById("contrasena2").value.trim();
+	if(pass2Value == ''){
+		errorFor(document.getElementById("contrasena2"), document.getElementById("smallContrasena2"), 'La confirmación de contraseña no puede estar vacía');
+		var error = "La confirmación de contraseña no puede estar vacía";
+	}else if(passValue != pass2Value){
+		errorFor(document.getElementById("contrasena2"), document.getElementById("smallContrasena2"), 'Las contraseñas no coinciden');
+		var error = "Contraseñas no coinciden";
+	}else{
+		exitoFor(document.getElementById("contrasena2"),document.getElementById("smallContrasena2"));
+		var error = "";
+	}
+	return error;
+}
+
+function checkTelefono(){
+	const telefonoValue = document.getElementById("telefono").value.trim();
+	var expresion_regular_telefono = /^[0-9]{9}$/;
+	if(telefonoValue == ''){
+		errorFor(document.getElementById("telefono"), document.getElementById("smallTelefono"), 'El teléfono no puede estar vacío');
+		var error = "El teléfono no puede estar vacío";
+	}else if(expresion_regular_telefono.test(telefonoValue) == false){
+		errorFor(document.getElementById("telefono"), document.getElementById("smallTelefono"), 'Número de teléfono incorrecto');
+		var error = "Teléfono incorrecto";
+	}else{
+		exitoFor(document.getElementById("telefono"),document.getElementById("smallTelefono"));
+		var error = "";
+	}
+}
+
+function errorFor(input, small, mensaje){
+	input.className = "error";
+	small.className = "errorSmall";
+	small.innerText = mensaje;
+}
+
+function exitoFor(input, small){
+	input.className = "";
+	small.className = "";
+}
+

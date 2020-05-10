@@ -1,0 +1,21 @@
+<?php
+    session_start();
+	
+	if(isset($_SESSION["registro"])){
+		$registro['nombre'] = $_REQUEST["nombre"];
+		$registro['apellidos'] = $_REQUEST["apellidos"];
+		$registro['dni'] = $_REQUEST["fecha"];
+		$registro['edad'] = $_REQUEST["edad"];
+		$registro['tarjeta_sanitaria'] = $_REQUEST["dni"];
+		$registro['contrasena'] = $_REQUEST["tarjeta_sanitaria"];
+		$registro['contrasena2'] = $_REQUEST["contrasena2"];
+		$registro['fecha'] = $_REQUEST["fecha"];
+		$registro['email'] = $_REQUEST["email"];
+		$registro['telefono'] = $_REQUEST["telefono"];
+		$registro['domicilio'] = $_REQUEST["domicilio"];
+		
+		$_SESSION["registro"] = $nuevoUsuario;
+	}else{
+		Header("Location: registro_usuario.php");
+	}
+?>

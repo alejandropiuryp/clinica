@@ -1,0 +1,13 @@
+<?php
+   
+   function alta_usuario($conexion,$usuario){
+   		$fechaNacimiento = date('d/m/Y', strtotime($usuario["fecha"]));
+		
+		try{
+			$consulta = "CALL INSERTACLIENTE(:dni, :nombre, :apellido, :edad, :domicilio, :telefono,
+			:tarjeta, :pass, :fecha, :email)";
+			$stmt=$conexion->prepare($consulta);
+			$stmt->bindParam(':dni', $usuario["dni"]);
+		}
+   }
+?>

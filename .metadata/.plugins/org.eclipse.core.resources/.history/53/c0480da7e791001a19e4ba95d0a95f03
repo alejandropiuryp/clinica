@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100&family=Raleway&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	font-family: 'Raleway', sans-serif;
+}
+
+body{
+	background: url("../img/fondo-registro.jpg") no-repeat top center;
+	background-size: cover;
+	height: 100%;
+}
+
+h1{
+	color:#97D0F3;
+	border-left: 10px solid #27A8F7;
+	padding: 5px;
+}
+.contenedor{
+	position:absolute;
+	top:50%;
+	transform: translateY(-50%);
+	width: 100%;
+	padding: 0 20px;
+}
+
+#enviar{
+	display: block;
+	margin: 20px auto auto auto;
+	border-bottom: 0px;
+	background: #39b7dd;
+	padding: 15px;
+	cursor: pointer;
+	
+}
+.columnas{
+	max-width: 670px;
+	margin: 0 auto;
+	padding: 30px;
+	background: rgba(0,0,0,0.8);
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+
+.datos_personales{
+	display: flex;
+	flex-direction: column;
+	margin-right: 4%;
+}
+
+.datos_contacto{
+	display: flex;
+	flex-direction: column;
+}
+
+
+input{
+	margin: 10px 0;
+	background: transparent;
+	border: 0;
+	border-bottom: 2px solid white;
+	padding: 10px;
+	color: white;
+	
+}
+
+::-webkit-input-placeholder{
+	color: #c5ecfd;
+}
+
+::-moz-input-placeholder{
+	color: #c5ecfd;
+}
+
+::-ms-input-placeholder{
+	color: #c5ecfd;
+}
+
+small{
+	visibility: hidden;
+}
+
+.error{
+	border-color: #e74c3c;
+}
+
