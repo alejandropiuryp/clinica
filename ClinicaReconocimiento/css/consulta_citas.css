@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100&family=Raleway&display=swap');
+*{
+ 	outline: none;
+	font-family: 'Raleway', sans-serif;
+}
+body{
+	background: url("../img/fondo-registro.jpg") no-repeat top center;
+	background-size: cover;
+	height: 100%;
+	max-width:100%;
+	overflow-y:hidden;
+	overflow-x:hidden;
+}
+
+.paginacion {
+	margin:30px;
+}
+.grid-title {
+  display: grid;
+  grid-template-columns: 0.25fr 0.249fr 0.25fr;
+  grid-template-rows: 0.4fr;
+  grid-template-areas: "Categoria1 Categoria2 Categoria3 Categoria4";
+  width: 900px;
+  height: 120px;
+  margin-bottom:-40px;
+  
+}
+
+.Categoria1{
+ grid-area: Categoria1;  
+  padding:30px;
+  font-size:medium;
+  text-align: center;
+  color: white;
+  background-color: rgba(39, 167, 247, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+}
+.Categoria2{
+ grid-area: Categoria2; 
+  padding:30px;
+  font-size:medium;
+  text-align: center;
+  color: white;
+  background-color: rgba(39, 167, 247, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+}
+.Categoria3{
+ grid-area: Categoria3; 
+  padding:30px;
+  font-size:medium;
+  text-align: center;
+  color: white;
+  background-color: rgba(39, 167, 247, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+}
+.Categoria4{
+ grid-area: Categoria4; 
+  padding:30px;
+  font-size:medium;
+  text-align: center;
+  color: white;
+  background-color: rgba(39, 167, 247, 0.8);	
+  border: 1px solid rgba(0, 0, 0, 0.8);
+
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  grid-template-areas: "DNI Fecha-Hora Tipo-Cita Tipo-Certificado Botones";
+  background: transparent;
+  width: 900px;
+  height: 120px;  
+}
+
+grid-items {
+   color: white;
+}
+
+
+.DNI { 
+  grid-area: DNI;
+  background-color: rgba(0,0,0,0.5);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding:30px;
+  font-size:medium;
+  text-align: center;
+  color: white;
+
+ }
+
+.Fecha-Hora { 
+  grid-area: Fecha-Hora;
+  background-color: rgba(0,0,0,0.5);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding:30px;
+  font-size:medium;
+  text-align: center;
+  color: white;
+
+}
+
+.Tipo-Cita { 
+  grid-area: Tipo-Cita;
+  background-color: rgba(0,0,0,0.5);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding:30px;
+  font-size:medium;
+  text-align: center; 
+  color: white;
+ }
+
+.Tipo-Certificado {
+  grid-area: Tipo-Certificado;
+  background-color: rgba(0,0,0,0.5);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding:30px;
+  font-size:medium;
+  text-align: center;
+  color: white;  
+  }
+
+.Botones { 
+  grid-area: Botones; 	
+  background-color: rgba(0,0,0,0.5);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-left:none; 	
+  font-size:medium;
+  text-align: center;
+  color: white;
+}
+
+#delete-icon{
+   width:45px; 
+  height:45px;
+  background:transparent;
+  border:none;
+}
+
+.enlaces{
+  display: inline-block;
+  text-align: center;
+  position:fixed;
+  left:45%;
+  bottom: 5%;
+}
+
+.enlaces span, a {
+  color: black;
+  float: left;
+  font-size:25px;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+
+.current {
+  background-color: rgba(39, 167, 247, 0.8);
+  color: white;
+  border-radius: 20px;
+}
+
+.enlaces a:hover:not(.current) {background-color: #ddd; border-radius: 20px;}

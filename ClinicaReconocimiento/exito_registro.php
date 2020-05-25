@@ -14,6 +14,7 @@
 	
 	$conexion = crearConexionBD();
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
