@@ -17,7 +17,9 @@
 			$_SESSION["destino"] = "consulta_citas.php";
 			Header("Location: excepcion.php");
 		}
-		else Header("Location: consulta_citas.php");
+		else {
+			Header("Location: consulta_citas.php");
+		}
 	}
 	else Header("Location: consulta_citas.php"); // Se ha tratado de acceder directamente a este PHP
 ?>

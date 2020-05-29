@@ -18,11 +18,11 @@
 				$login = "error";
 			}else{
 				$_SESSION['login'] = $email;
-				Header("Location: prueba.php");
+				Header("Location: consulta_citas.php");
 			}
 		}else{
 			$_SESSION['admin'] = $email;
-			Header("Location: prueba.php");
+			Header("Location: consulta_citas.php");
 		}
 	}
 
@@ -34,9 +34,13 @@
 		<meta charset="utf-8">
 		<title>Login</title>
 		<link href="css/registro_usuario.css" rel="stylesheet" type="text/css" media="all">
+		<link href="css/login.css" rel="stylesheet" type="text/css" media="all">
 		<script src="js/registro_usuario.js" type="text/javascript"></script>
 	</head>
-
+<?php
+	include_once('menu.php');
+	include_once('cabecera.php');
+?>
 	<body>
 		<div class="contenedor">
 			<form action="login.php" method="post" onsubmit="return validateLog()">
@@ -52,7 +56,7 @@
 						}	
 						?>
 						<input type="submit" name="submit" value="Iniciar Sesión" />
-						 <a href="registro_usuario.php">¿No estás registrado?</a>
+						 <a class="redireccion"  href="registro_usuario.php">¿No estás registrado?</a>
 					</div>
 				</div>
 			</form>

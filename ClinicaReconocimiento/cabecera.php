@@ -4,16 +4,6 @@
 <link rel="stylesheet" type="text/css"	href="css/cabecera.css" />
 
 <header>
-<script>
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-</script>
 </header>
 <body>
 	<div class="encabezado">
@@ -24,9 +14,6 @@ function myFunction() {
   		<li><a href="#">Conócenos</a></li>
   		<li><a href="#">Servicios</a></li>
   		<li><a href="#">Citas</a></li>
-  		<li><a href="#" class="icon" onclick="myFunction()">
-    		<i class="fa fa-bars"></i>
-  		</a></li>
   		
 	</ul>
 	</div>

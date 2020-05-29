@@ -12,7 +12,9 @@
     <div class="dropdown-content">
       <a href="#">Perfil</a>
       <a href="#">Mis citas</a>
-	  <a href="#">Cerrar sesión</a>
+	  <?php if (isset($_SESSION['login'])) {?>
+	  		<a href="logout.php">Cerrar sesión</a>
+	  <?php } ?>
     </div>
   </li>
   <li><a href="#home"><i class="fa fa-phone" aria-hidden="true"></i> 902 103 400</a></li>

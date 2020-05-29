@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100&family=Raleway&display=swap');
+body {
+ background: url("../img/fondo-registro.jpg") no-repeat top center;
+	background-size: cover;
+	height: 100%;
+	margin:0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	font-family: 'Raleway', sans-serif;	
+    max-width: 100%;
+    overflow-x: hidden;
+   
+}
+.contenedor{
+	margin:auto;
+}
+.foto1{
+	margin-top:-80px;
+	float: right;
+	border-radius: 25px;
+	padding-left: 10px;
+	height: 200px;
+    width: 400px;
+    
+}
+.foto2{
+	margin-top:-70px;
+	float: left;
+	border-radius: 25px;
+	padding-right: 10px;
+	height: 200px;
+    width: 300px;
+}
+
+div.uno{
+	margin-left: -200px;
+	color: white;
+	height: auto;
+    width: 1200px;
+     background-color: rgba(0,0,0,0.8);
+   border-radius: 25px;
+   padding: 30px;
+   margin: 40px;
+   overflow: auto;
+   border-left: 10px solid #27A8F7;
+	
+
+	
+}
+div.dos{
+	margin-left: -200px;
+	height: auto;
+    width: 1200px;
+    background-color: rgba(0,0,0,0.8);
+   border-radius: 25px;
+   padding: 30px;
+   margin: 40px;
+    color:  white;
+    overflow: auto;
+     border-right: 10px solid #27A8F7;
+}
+.T1{
+	color:#97D0F3;
+	text-align: center;
+}
+.T2{
+	color:#97D0F3;
+	text-align: center;
+}
+

@@ -225,7 +225,3 @@ function exitoFor(input, small){
 	small.className = "";
 }
 
-function errorServer(){
-	alert("gola");
-}
-

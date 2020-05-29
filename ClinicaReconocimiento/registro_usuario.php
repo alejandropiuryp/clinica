@@ -32,20 +32,17 @@
 		<script src="js/registro_usuario.js" type="text/javascript"></script>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
 	</head>
-
+<?php
+	include_once('menu.php');
+	include_once('cabecera.php');
+?>
 	<body>
-		<script>
-			$(document).ready(function(){
-				$("#registroUsuario").on("submit",function(){
-					return validateForm();
-				});
-			});
-		</script>
-			
+
+	
 			<!--Formulario-->
 			<div class="contenedor">
 				<div class="form">
-					<form id="registroUsuario"  method="get" action="validacion_registro.php" onsubmit="return validateForm()" >
+					<form id="registroUsuario"  method="get" action="validacion_registro.php" onsubmit="return validateForm()">
 						<div class="columnas">
 							
 							<div class = "datos_personales">
@@ -78,15 +75,15 @@
 								<h1>Datos de contacto</h1>
 								<input type="text" id="email" name="email"  value = "<?php echo $registro['email'];?>" placeholder="Correo electrónico"  />
 								<small id="smallEmail">Error message</small>
-								<input type="text" id="contrasena" name="contrasena"  placeholder="Contraseña" />
+								<input type="password" id="contrasena" name="contrasena"  placeholder="Contraseña" />
 								<small id="smallContrasena">Error message</small>
-								<input type="text" id="contrasena2" name="contrasena2"  placeholder="Confirmar contraseña" />
+								<input type="password" id="contrasena2" name="contrasena2"  placeholder="Confirmar contraseña" />
 								<small id="smallContrasena2">Error message</small>
 								<input type="number" id="telefono" name="telefono"  value = "<?php echo $registro['telefono'];?>" placeholder="Teléfono de contacto"  />
 								<small id="smallTelefono">Error message</small>
 								<input type="text" id="domicilio" name="domicilio"  value = "<?php echo $registro['domicilio'];?>" placeholder="C/Domicilio"  />
 								<small id="smallDomicilio">Error message</small>
-								<a href="registro_usuario.php">¿Ya tienes una cuenta?</a>
+								<a class="redireccion" href="login.php">¿Ya tienes una cuenta?</a>
 								
 							</div>
 							

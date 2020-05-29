@@ -22,12 +22,24 @@
 
 	}
 	
-		
-		
-	// ¿Venimos simplemente de cambiar página o de haber seleccionado un registro ?
+	if(!isset($_SESSION["filtro"])){
+		$filtro['dni'] = "";
+		$filtro['fechaInicio'] = "";
+		$filtro['fechaFin'] = "";		
+		$filtro['certificado'] = "";
 
-	// ¿Hay una sesión activa?
+		
+		$_SESSION["filtro"] = $filtro;
+	}else{
+		$filtro = $_SESSION["filtro"];
+	
+		if(isset($_SESSION["errores"])){
+			$errores = $_SESSION["errores"];
+			unset($_SESSION["errores"]);
+		}
+	}	
 
+	
 	if (isset($_SESSION["paginacion"])) $paginacion = $_SESSION["paginacion"];
 
 	$pagina_seleccionada = isset($_GET["PAG_NUM"])? (int)$_GET["PAG_NUM"]:
@@ -51,20 +63,31 @@
 	//Comprobamos si es un administrador del sistema o un cliente 
 	/*if(isset($_SESSION['admin'])) {
 		// La consulta a paginar para un admin
-		$query=consultarTodasCitas($conexion);
+
 
 	} else {
 		// La consulta a paginar para un cliente
-		//$query=consultarCitasCliente($conexion, $_SESSION['dni']);  //de dónde saco el dni?
-		$query=consultarTodasCitas($conexion);
+	 	
 	}*/
-	//$query=consultarTodasCitas($conexion);
+		
+		
+		
+		
+		
+			
+	if(isset($_SESSION["query"])){
+		$query=$_SESSION["query"];
+		unset($_SESSION["query"]);
+	} else {
+		$query="SELECT FECHA, HORA, TIPO_CITA,TIPO_CERTIFICADO, DNI FROM CITAS";
+	
+		
+		
+		
+	}
+	
 	// Se comprueba que el tamaño de página, página seleccionada y total de registros son conformes.
-
 	// En caso de que no, se asume el tamaño de página propuesto, pero desde la página 1
-	$query='SELECT FECHA, HORA, TIPO_CITA,TIPO_CERTIFICADO, DNI FROM CITAS';
-	//$query=consultarTodasCitas($conexion);
-
 	$total_registros = total_consulta($conexion,$query);
 
 	$total_paginas = (int) ($total_registros / $pag_tam);
@@ -97,12 +120,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" type="text/css" href="css/consulta_citas.css"/>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
-  <script src="js/buttonSlide.js"></script>
+  <script src="js/filtrar_citas.js"></script>
+  <script src="js/sideBarNav.js"></script>  
   <title>Mis Citas</title>
 </head>
-
 <body>
 
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">Filtros:</a>
+  
+  <form id="filtrosConsulta" method="post" action="validacion_filtro.php" onsubmit="return validateForm();">
+  
+  <div class="filtros">
+   <div class="filtroDNI">
+  	<label for="dni" id="labeldni">DNI</label>
+  	<input id="dni" name="dni" type="text" placeholder="DNI"/>
+  	<small id="smallDni">Error message</small>
+  </div>
+  
+  <div class="filtroFecha">
+  	<label for="filtrosFecha">Fechas</label>
+  	<input id="fechaInicio" name="fechaInicio" type="date"/><br>
+  	<input id="fechaFin" name="fechaFin" type="date"/>
+  	<small id="smallFecha">Error message</small>
+  </div>
+  
+   <div class="filtroCertificado">
+    <label for="certificado">Certificado</label>
+  	<input id="certificado" name="certificado" type="number" placeholder="Tipo de certificado" min="0" step="1"/>
+  	<small id="smallCertificado">Error message</small>
+  </div>
+  
+	<div id="filtrosError">
+  	<small id="smallFiltros">Error message</small>
+  </div>
+  
+  <button id="filtrar" name="filtrar" type="submit">Filtrar</button>
+     <?php 
+		if(isset($errores) && count($errores) > 0){
+			echo "<div id=\"div_errores\" class=\"errorServer\">";
+			echo "<h4> Errores en el filtrado: </h4>";
+		foreach ($errores as $error) {
+			echo $error;
+		}
+		echo "</div>";
+		}
+			
+	?> 
+  </form>
+  </div>
+
+</div>
+
+<span class="punteroNav" onclick="openNav()">&nbsp;&#10094;</span>
 
 <main>
 		<nav>
@@ -181,7 +252,7 @@
 	
 	
 		<div class="enlaces">
-				<span class="previous">&laquo;</span>
+	
 			<?php
 
 				for( $pagina = 1; $pagina <= $total_paginas; $pagina++ )
@@ -192,10 +263,9 @@
 
 			<?php }	else { ?>
 
-						<span><a href="consulta_citas.php?PAG_NUM=<?php echo $pagina; ?>&PAG_TAM=<?php echo $pag_tam; ?>"><?php echo $pagina; ?></a></span>
+						<a href="consulta_citas.php?PAG_NUM=<?php echo $pagina; ?>&PAG_TAM=<?php echo $pag_tam; ?>"><?php echo $pagina; ?></a>
 
 			<?php } ?>
-				<span class="next">&raquo;</span>
 		</div>
 
 	

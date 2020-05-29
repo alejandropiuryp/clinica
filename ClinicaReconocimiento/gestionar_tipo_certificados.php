@@ -10,7 +10,7 @@ require_once("gestionBD.php");
 	if($listaTipos !=NULL){
 		//Para cada tipo certificado del listado devuelto
 		foreach($listaTipos as $tipo) { 
-			//Creamos OPTIONS con VALUE = nombre del tipo de certificado 
+			//Creamos OPTIONS con VALUE = tipo de certificado 
 			echo"<option label='".$tipo["TIPO"]."'value='".$tipo["TIPO"]."'/>".$tipo["TIPO"]."</option>";
 	 	} 
 	}

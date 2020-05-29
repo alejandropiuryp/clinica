@@ -16,7 +16,7 @@
 		$_SESSION["errores"] = $errores;
 		Header("Location: pedir_cita.php");
 	}else{
-		Header("Location: exito_cita.php");    //¿A dónde lo devuelvo?
+		Header("Location: exito_cita.php");    //MANDAR AL INICIO
 	}
 	
 ///////////////////////////////////////////////////////////
