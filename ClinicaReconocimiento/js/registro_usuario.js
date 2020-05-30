@@ -184,7 +184,7 @@ function checkTelefono(){
 
 function checkDomicilio(){
 	const domicilioValue = document.getElementById("domicilio").value.trim();
-	var expresion_regular_domicilio= /^[a-zA-Z ']*$/;
+	var expresion_regular_domicilio= /^[A,B,C]{1}/[a-zA-Z ']*$/;
 	if(domicilioValue == ''){
 		errorFor(document.getElementById("domicilio"), document.getElementById("smallDomicilio"), 'El domicilio no puede estar vacío');
 		var error = "El domicilio no puede estar vacío";

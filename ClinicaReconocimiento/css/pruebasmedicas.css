@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100&family=Raleway&display=swap');
+body{
+		 background: url("../img/fondo-registro.jpg") no-repeat top center;
+	background-size: cover;
+	height: 100%;
+	margin:0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	font-family: 'Raleway', sans-serif;	
+    max-width: 100%;
+    overflow-x: hidden;;
+	}
+	.div1{
+    margin-top:5%;
+    color: white;
+ 
+	}
+	.Titulo{
+		text-align:center;
+		color:#97D0F3;
+		
+	}	
+.mySlides {display:none}
+.encabezado{
+	margin-top:-30px;
+	text-align: center;
+	color:#97D0F3;
+}
+.contenedor{
+	background-color: rgba(0,0,0,0.8);
+	border-right: 10px solid #27A8F7;
+	border-radius: 75px;
+    
+    padding: 24px;
+    height: 600px;
+    width: 800px;
+     margin-left: auto;
+     margin-right: auto;
+     
+     
+    
+}
+img{
+	width: 200px;
+	height: 200px;
+	margin-left:300px;
+	padding-top:10px;
+}
+.slideFoto{
+	margin-bottom: 90px;
+}
+
+
+
+
+
+
+
+	

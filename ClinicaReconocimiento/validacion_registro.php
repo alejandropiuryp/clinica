@@ -88,7 +88,7 @@ function validarDatosUsuarios($registro){
 	// Validación del domicilio
 	if($registro["domicilio"] == ""){
 		$errores[] = "<p>El domicilio no puede estar vacío.</p>";
-	}else if(!preg_match("/^[a-zA-Z ']*$/", $registro["domicilio"])){
+	}else if(!preg_match("/^[A,B,C]{1}/[a-zA-Z ']*$/", $registro["domicilio"])){
 		$errores[] = "<p>El domicilio no es correcto.</p>";
 	}
 	// Validación de la fecha de nacimiento

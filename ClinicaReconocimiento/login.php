@@ -18,7 +18,7 @@
 				$login = "error";
 			}else{
 				$_SESSION['login'] = $email;
-				Header("Location: consulta_citas.php");
+				Header("Location: consulta_perfil.php");
 			}
 		}else{
 			$_SESSION['admin'] = $email;

@@ -1,5 +1,4 @@
 <?php
-   
    function alta_usuario($conexion,$usuario){
    		$fechaNacimiento = date('d/m/Y', strtotime($usuario["fecha"]));
 		
@@ -43,4 +42,13 @@
 		$stmt->execute();
 		return $stmt->fetchColumn();
 	}
+	 
+	function extraerDatosUsuario($conexion, $email){
+        $consulta = "SELECT * FROM CLIENTES WHERE EMAIL=:email";
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':email',$email);
+        $stmt->execute();
+        return $stmt->fetch();
+     }
+	
 ?>

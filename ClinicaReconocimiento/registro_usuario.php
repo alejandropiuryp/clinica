@@ -42,7 +42,7 @@
 			<!--Formulario-->
 			<div class="contenedor">
 				<div class="form">
-					<form id="registroUsuario"  method="get" action="validacion_registro.php" onsubmit="return validateForm()">
+					<form id="registroUsuario"  method="post" action="validacion_registro.php" onsubmit="return validateForm()">
 						<div class="columnas">
 							
 							<div class = "datos_personales">
