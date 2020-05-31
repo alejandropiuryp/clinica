@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@100&family=Raleway&display=swap');
-h1{
-	text-align:center;
-}
-		body{
+body{
 	background: url("../img/fondo-registro.jpg") no-repeat top center;
 	background-size: cover;
 	height: 100%;
@@ -13,94 +10,99 @@ h1{
 	font-family: 'Raleway', sans-serif;	
     max-width: 100%;
     overflow-x: hidden;
- 
-		}
-		.contenedor{
+}
 		
-			text-align: center;
-			
-			
-		}
+#title{
+  	display: flex;
+  	flex-direction: column;
+  	justify-content: center;
+  	text-align: center;
+  	margin-top:30px;
+  	font-size:60px;
+}
+
+.contenedor{
 		
-		.div1{
-		    background-color: rgba(0,0,0,0.8);
-			border-left: 10px solid #27A8F7;
-			border-radius: 25px;
-			margin-top: 100px;
-            margin-bottom: 100px;
-            margin-left: 5%;
+	text-align: center;
+	margin-top:-40px;						
+}
+		
+.div1{
+	background-color: rgba(0,0,0,0.8);
+	border-left: 10px solid #27A8F7;
+	border-radius: 25px;
+	margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 12%;
             
-            height: 500px;
-            width: 500px;
-            padding: 20px;
-            color: white;
+    height: 500px;
+    width: 500px;
+    padding: 20px;
+    color: white;
             
-		}
-		.div2{
-			background-color: rgba(0,0,0,0.8);
-			border-left: 10px solid #27A8F7;
-			border-radius: 25px;
-			margin-top: 10px;
-            margin-bottom: 100px;
-            margin-left: 5%;
-            
-            height: 500px;
-            width: 500px;
-            padding: 20px;
-            color: white;
-          
-            
-		}
-		.div3{
-			background-color: rgba(0,0,0,0.8);
-			border-right: 10px solid #27A8F7;
-			border-radius: 25px;
-			margin-top: -1280px;
-            margin-bottom: 100px;
-            margin-left: 55%;
-         
-            
-          
-            height: 500px;
-            width: 500px;
-            padding: 20px;
-            color: white;
-            
-         
-           
-		}
-		.div4{
-		    background-color: rgba(0,0,0,0.8);
-			border-right: 10px solid #27A8F7;
-			border-radius: 25px;
-			margin-top: 10px;
-            margin-bottom: 100px;
-            margin-left: 55%;
-            height: 500px;
-            width: 500px;
-            padding: 20px;
-            color: white;
-           
-           
-		}
-		img{
-			 margin-left: auto;
-             margin-right: auto;
-             border-radius: 25px;
-		}
-		.P1{
-			
-			margin-top: 50px;
-		}
-		.P2{
-			
-			margin-top: 50px;
-		}
-		.P3{
-			
-			margin-top: 50px;
-		}
-		.P4{
-			
-			margin-top: 50px;
-		}
+}
+
+.div2{
+	background-color: rgba(0,0,0,0.8);
+	border-left: 10px solid #27A8F7;
+	border-radius: 25px;
+	margin-top: 10px;
+    margin-bottom: 100px;
+    margin-left: 12%;         
+    height: 500px;
+    width: 500px;
+    padding: 20px;
+    color: white;
+                      
+}
+
+.div3{
+	background-color: rgba(0,0,0,0.8);
+	border-right: 10px solid #27A8F7;
+	border-radius: 25px;
+	margin-top: -1280px;
+    margin-bottom: 100px;
+    margin-left: 53%;
+    height: 500px;
+    width: 500px;
+    padding: 20px;
+    color: white;
+}
+
+.div4{
+	background-color: rgba(0,0,0,0.8);
+	border-right: 10px solid #27A8F7;
+	border-radius: 25px;
+	margin-top: 10px;
+    margin-bottom: 100px;
+    margin-left: 53%;
+    height: 500px;
+    width: 500px;
+    padding: 20px;
+    color: white;
+}
+
+.fotos{
+	margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    width:90%;
+}
+
+#foto4{
+	height:70%;
+}
+
+.P1{
+	margin-top: 40px;
+}
+
+.P2{
+	margin-top: 40px;
+}
+.P3{
+	margin-top: 40px;
+}
+.P4{
+	margin-top: 40px;
+}

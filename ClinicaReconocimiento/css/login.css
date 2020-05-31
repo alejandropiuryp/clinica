@@ -1,10 +1,16 @@
 .contenedor{
 	position:absolute;
-	top:60%;
+	top:50%;
 	transform: translateY(-50%);
 	width: 100%;
 	padding: 0 20px;
 	margin-bottom:80px;
 }
-
-
+.enviar{
+	display: block;
+	margin: 20px auto auto auto;
+	border-bottom: 0px;
+	background: #39b7dd;
+	padding: 15px;
+	cursor: pointer;
+}

@@ -1,3 +1,9 @@
+<?php
+	if (session_status() == PHP_SESSION_NONE) {
+    	session_start();
+	}
+?>
+
 <!DOCTYPE html>
 <head>
   <meta name="viewport" content="width=device-width">
@@ -6,19 +12,26 @@
 </head>
 <body>
 <nav>
+
 <ul class="menu">
   <li class="dropdown">
+  <?php if (isset($_SESSION['login']) || isset($_SESSION['admin'])){ ?>
     <a href="#" class="dropbtn">Mi cuenta</a>
     <div class="dropdown-content">
-      <a href="#">Perfil</a>
-      <a href="#">Mis citas</a>
-	  <?php if (isset($_SESSION['login'])) {?>
-	  		<a href="logout.php">Cerrar sesión</a>
-	  <?php } ?>
+     <?php if (isset($_SESSION['login'])){ ?>
+     	<a href="consulta_perfil.php">Perfil</a>
+     <?php } ?>
+      <a href="consulta_citas.php">Mis citas</a>
+	  <a href="logout.php">Cerrar sesión</a>
     </div>
   </li>
-  <li><a href="#home"><i class="fa fa-phone" aria-hidden="true"></i> 902 103 400</a></li>
+   <?php }else{ ?>
+   	<li><a href="login.php">Iniciar sesión</a></li>
+   	<?php } ?>
+  <li><a href="#home"><i id="icon" class="fa fa-phone" aria-hidden="true"></i>902 103 400</a></li>
 </ul>
+
+
 </nav>
 </body>
 </html>

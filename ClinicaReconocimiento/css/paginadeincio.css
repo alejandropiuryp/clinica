@@ -10,10 +10,15 @@ body {
 	font-family: 'Raleway', sans-serif;	
     max-width: 100%;
     overflow-x: hidden;
+	overflow-y: hidden;
    
 }
 .contenedor{
-	margin:auto;
+	margin-top:55px;
+  	position:absolute;
+  	top: 55%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
 }
 .foto1{
 	margin-top:-80px;
@@ -33,32 +38,28 @@ body {
     width: 300px;
 }
 
-div.uno{
-	margin-left: -200px;
+.uno{
 	color: white;
 	height: auto;
     width: 1200px;
-     background-color: rgba(0,0,0,0.8);
-   border-radius: 25px;
-   padding: 30px;
-   margin: 40px;
-   overflow: auto;
-   border-left: 10px solid #27A8F7;
-	
-
-	
+    background-color: rgba(0,0,0,0.8);
+   	border-radius: 25px;
+   	padding: 30px;
+   	margin: 40px;
+   	overflow: auto;
+   	border-left: 10px solid #27A8F7;	
 }
-div.dos{
-	margin-left: -200px;
+
+.dos{
 	height: auto;
     width: 1200px;
     background-color: rgba(0,0,0,0.8);
-   border-radius: 25px;
-   padding: 30px;
-   margin: 40px;
+   	border-radius: 25px;
+   	padding: 30px;
+   	margin: 40px;
     color:  white;
     overflow: auto;
-     border-right: 10px solid #27A8F7;
+    border-right: 10px solid #27A8F7;
 }
 .T1{
 	color:#97D0F3;

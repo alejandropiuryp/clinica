@@ -37,13 +37,13 @@ function validarDatosUsuarios($registro){
 	//Validación del nombre
 	if($registro["nombre"] == ""){
 		$errores[] = "<p>El nombre no puede estar vacío.</p>";
-	}else if(!preg_match("/^[a-zA-Z ']*$/", $registro["nombre"])){
+	}else if(!preg_match("/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/", $registro["nombre"])){
 		$errores[] = "<p>El nombre no es correcto.</p>";
 	}
 	//Validación de apellidos
 	if($registro["apellidos"] == ""){
 		$errores[] = "<p>El campo apellidos no puede estar vacío.</p>";
-	}else if(!preg_match("/^[a-zA-Z ']*$/", $registro["apellidos"])){
+	}else if(!preg_match("/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/", $registro["apellidos"])){
 		$errores[] = "<p>El campo apellidos no es correcto.</p>";
 	}
 	//Validación del DNI
@@ -88,7 +88,7 @@ function validarDatosUsuarios($registro){
 	// Validación del domicilio
 	if($registro["domicilio"] == ""){
 		$errores[] = "<p>El domicilio no puede estar vacío.</p>";
-	}else if(!preg_match("/^[A,B,C]{1}/[a-zA-Z ']*$/", $registro["domicilio"])){
+	}else if(!preg_match("/^[A,B,C]{1}\/[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/", $registro["domicilio"])){
 		$errores[] = "<p>El domicilio no es correcto.</p>";
 	}
 	// Validación de la fecha de nacimiento

@@ -6,17 +6,21 @@
 <header>
 </header>
 <body>
-	<div class="encabezado">
-	<img id="logo" src="img/clinica.png" alt="Certificados Moguer">
-	<div class="topnav" id="myTopnav">
- 	<ul class="listaCabecera">
-  		<li><a href="#">Inicio</a></li>
-  		<li><a href="#">Conócenos</a></li>
-  		<li><a href="#">Servicios</a></li>
-  		<li><a href="#">Citas</a></li>
+	<div class="contenedorCabecera">
+		<img id="logo" src="img/clinica.png" alt="Certificados Moguer">
+		<div class="encabezadoCabecera">
+			<div class="topnav" id="myTopnav">
+ 			<ul class="listaCabecera">
+  				<li><a href="paginaInicio.php">Inicio</a></li>
+  				<li><a href="Conocenos.php">Conócenos</a></li>
+  				<li><a href="Servicios.php">Servicios</a></li>
+  				<?php if(!isset($_SESSION['admin'])) {?>
+  				<li><a href="pedir_cita.php">Citas</a></li>
+  				<?php } ?>
   		
-	</ul>
+			</ul>
+			</div>
+		</div>
 	</div>
-</div>	
 </body>
 </html>

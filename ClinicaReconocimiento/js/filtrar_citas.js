@@ -13,27 +13,30 @@ function validateForm(){
 }
 
 function checkDNI(){
-	const DNIvalue = document.getElementById("dni").value.trim();
-	var expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
-	if(DNIvalue !="" && expresion_regular_dni.test(DNIvalue) == false){
-		errorFor(document.getElementById("dni"), document.getElementById("smallDni"), 'Introduce un DNI correcto');
-		var error = "DNI no correcto";
+	if(document.getElementById("dni").style.visibility!="hidden"){
+		const DNIvalue = document.getElementById("dni").value.trim();
+		var expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+		if(DNIvalue !="" && expresion_regular_dni.test(DNIvalue) == false){
+			errorFor(document.getElementById("dni"), document.getElementById("smallDni"), 'Introduce un DNI correcto');
+			var error = "DNI no correcto";
+		}else{
+			exitoFor(document.getElementById("dni"),document.getElementById("smallDni"));
+			var error = "";
+		}
+	
 	}else{
 		exitoFor(document.getElementById("dni"),document.getElementById("smallDni"));
-		var error = "";
+		var error = "";	
+	
 	}
 	return error;
+
 }
 
 function checkFecha(){
 	const fechaInicio = document.getElementById("fechaInicio").value.trim();
 	const fechaFin = document.getElementById("fechaFin").value.trim();	
-	var inputDateInicio= new Date(fechaInicio);
-	var inputDateFin= new Date(fechaFin);
-	if (inputDateInicio.getDay()==0 || inputDateInicio.getDay()==5 || inputDateInicio.getDay()==6 || inputDateFin.getDay()==0 || inputDateFin.getDay()==5 || inputDateFin.getDay()==6 ) {
-		errorFor(document.getElementById("fechaFin") , document.getElementById("smallFecha"), 'Los días no puede ser viernes, sábado o domingo');
-		var error = "Los días no puede ser viernes, sábado o domingo";
-	} else if ((fechaInicio=="" && fechaFin!="") || (fechaFin=="" && fechaInicio!="")) {
+	if ((fechaInicio=="" && fechaFin!="") || (fechaFin=="" && fechaInicio!="")) {
 		errorFor(document.getElementById("fechaFin") , document.getElementById("smallFecha"), 'Rellena ambas fechas');
 		var error = "Los días no puede ser viernes, sábado o domingo";	
 	} else {

@@ -39,7 +39,7 @@ function checkPassLog(){
 }
 
 function checkNombre(){
-	var expresion_regular_nombre= /^[a-zA-Z ']*$/;
+	var expresion_regular_nombre= /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/;
 	const nombreValue = document.getElementById("nombre").value.trim();
 	if(nombreValue == ''){
 		errorFor(document.getElementById("nombre"), document.getElementById("smallNombre"), 'El nombre no puede estar vacío');
@@ -55,7 +55,7 @@ function checkNombre(){
 }
 
 function checkApellidos(){
-	var expresion_regular_apellidos= /^[a-zA-Z ']*$/;
+	var expresion_regular_apellidos= /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/;
 	const apellidosValue = document.getElementById("apellidos").value.trim();
 	if(apellidosValue == ''){
 		errorFor(document.getElementById("apellidos"), document.getElementById("smallApellidos"), 'El apellido no puede estar vacío');
@@ -184,7 +184,7 @@ function checkTelefono(){
 
 function checkDomicilio(){
 	const domicilioValue = document.getElementById("domicilio").value.trim();
-	var expresion_regular_domicilio= /^[A,B,C]{1}/[a-zA-Z ']*$/;
+	var expresion_regular_domicilio= /^[A,B,C]{1}\/[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/;
 	if(domicilioValue == ''){
 		errorFor(document.getElementById("domicilio"), document.getElementById("smallDomicilio"), 'El domicilio no puede estar vacío');
 		var error = "El domicilio no puede estar vacío";

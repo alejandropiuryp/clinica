@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@100&family=Raleway&display=swap');
 
-
 body{
-	background: url("../img/fondo-registro.jpg") no-repeat top center;
+	background: linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,.2)), url("../img/fondo_pedirCitas.jpg") no-repeat top center;
 	background-size: cover;
 	height: 100%;
 	margin:0;
@@ -31,7 +30,7 @@ h1{
 }
 .contenedor{
 	position:absolute;
-	top:65%;
+	top:55%;
 	transform: translateY(-50%);
 	width: 100%;
 	padding: 0 20px;
@@ -70,6 +69,7 @@ h1{
 #labelFecha {
 	 transform: translateX(30%);
 }
+
 label {
 	padding-left:50px;
 	color: white;
@@ -87,6 +87,16 @@ input{
 	padding: 10px;
 	color: white;
 	
+}
+
+select{
+	margin: 10px 0;
+	background: transparent;
+	border: 0;
+	border-bottom: 2px solid white;
+	padding: 10px;
+	color: white;
+	width:150px;
 }
 
 

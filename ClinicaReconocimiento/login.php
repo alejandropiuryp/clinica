@@ -4,25 +4,30 @@
   	include_once("gestionBD.php");
  	include_once("gestionarUsuarios.php");
 	
-	if (isset($_POST['submit'])){
-		$email= $_POST['email'];
-		$pass = $_POST['contrasena'];
-
-		$conexion = crearConexionBD();
-		$num_usuarios = consultarUsuario($conexion,$email,$pass);
-		$num_trabajadores = consultarTrabajador($conexion, $email, $pass);
-		cerrarConexionBD($conexion);	
+	if(isset($_SESSION['login']) || isset($_SESSION['admin'])){
+		Header("Location: paginaInicio.php");
+	}else{
 	
-		if($num_trabajadores == 0){
-			if($num_usuarios == 0){
-				$login = "error";
+		if (isset($_POST['submit'])){
+			$email= $_POST['email'];
+			$pass = $_POST['contrasena'];
+
+			$conexion = crearConexionBD();
+			$num_usuarios = consultarUsuario($conexion,$email,$pass);
+			$num_trabajadores = consultarTrabajador($conexion, $email, $pass);
+			cerrarConexionBD($conexion);	
+	
+			if($num_trabajadores == 0){
+				if($num_usuarios == 0){
+					$login = "error";
+				}else{
+					$_SESSION['login'] = $email;
+					Header("Location: paginaInicio.php");
+				}
 			}else{
-				$_SESSION['login'] = $email;
-				Header("Location: consulta_perfil.php");
+				$_SESSION['admin'] = $email;
+				Header("Location: paginaInicio.php");
 			}
-		}else{
-			$_SESSION['admin'] = $email;
-			Header("Location: consulta_citas.php");
 		}
 	}
 
@@ -38,7 +43,6 @@
 		<script src="js/registro_usuario.js" type="text/javascript"></script>
 	</head>
 <?php
-	include_once('menu.php');
 	include_once('cabecera.php');
 ?>
 	<body>
@@ -49,13 +53,13 @@
 						<h1>Iniciar Sesión</h1>
 						<input type="text" name="email" id="email" placeholder="Correo electrónico" />
 						<small id="smallEmail">Error message</small>
-						<input type="text" name="contrasena" id="contrasena" placeholder="Contraseña"/>
+						<input type="password" name="contrasena" id="contrasena" placeholder="Contraseña"/>
 						<small id="smallContrasena">Error message</small>
 						<?php if (isset($login)) {
 							echo "<small class = \"errorSmall\">Error en la contraseña o no existe el usuario </small>";
 						}	
 						?>
-						<input type="submit" name="submit" value="Iniciar Sesión" />
+						<input class="enviar" type="submit" name="submit" value="Iniciar Sesión" />
 						 <a class="redireccion"  href="registro_usuario.php">¿No estás registrado?</a>
 					</div>
 				</div>

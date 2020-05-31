@@ -15,7 +15,7 @@
 		$_SESSION["errores"] = $errores;
 		Header("Location: consulta_perfil.php");
 	}else{
-		Header("Location: controlador_perfil.php"); //DONDE SE MANDA
+		Header("Location: controlador_perfil.php"); 
 	}
 	
 ///////////////////////////////////////////////////////////
@@ -43,7 +43,7 @@ function validarDatosPerfil($perfil){
 	
 	// Validación del domicilio
 	if($perfil['domicilio']!=""){
-		if(!preg_match("/^[A,B,C]{1}/[a-zA-Z ']*$/", $perfil["domicilio"])){
+		if(!preg_match("/^[A,B,C]{1}\/[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/", $perfil["domicilio"])){
 			$errores[] = "<p>El domicilio no es correcto.</p>";
 		}
 	

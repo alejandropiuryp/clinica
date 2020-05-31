@@ -149,7 +149,6 @@ CREATE TABLE CLIENTES(
  PRIMARY KEY(DNI)
 );
 /
-SELECT COUNT(*) AS TOTAL FROM CLIENTES where EMAIL = "alejandropiuryp@gmail.com";
 CREATE TABLE PRUEBAS_MEDICAS(
  NOMBRE VARCHAR(25) NOT NULL,
  DNI VARCHAR(9) NOT NULL,
@@ -401,7 +400,7 @@ CREATE OR REPLACE PROCEDURE InsertaPrueba(w_nombre IN pruebas_medicas.nombre%TYP
                                     RF-03
 Devuelve el estado de un certificado
 ***********************************************************************************/
-CREATE OR REPLACE FUNCTION ConsultaEstadoCertificado (w_oid_c IN certificados.oid_c%TYPE)   --Útil??
+CREATE OR REPLACE FUNCTION ConsultaEstadoCertificado (w_oid_c IN certificados.oid_c%TYPE)   
 RETURN VARCHAR
 IS
     w_estado certificados.estado_certificado%TYPE;
@@ -414,7 +413,7 @@ END;
                                     RF-06
 Filtra los certificados dado un tipo
 ***********************************************************************************/
-CREATE OR REPLACE PROCEDURE FiltroCertificadoPorTipo (w_tipo IN certificados.tipo_certificado%TYPE)   ---Mejora? por fecha?
+CREATE OR REPLACE PROCEDURE FiltroCertificadoPorTipo (w_tipo IN certificados.tipo_certificado%TYPE)   
 IS
     w_oid certificados.oid_c%TYPE;
     w_fecha certificados.fecha_emision%TYPE; 
@@ -553,22 +552,6 @@ CREATE OR REPLACE PROCEDURE InsertaTrabajador
         VALUES (w_nif, w_nombre, w_apellidos, w_especialidad, w_telefono, w_email,w_pass);
         COMMIT;
     END;
-/
-
-/***********************************************************************************
-                                    RF-05
-Agrupa por NIF las citas atendidas por cada trabajador dada una fecha  //REVISAR
-***********************************************************************************/
-CREATE OR REPLACE PROCEDURE CitasTrabajador (w_fecha IN citas.fecha%TYPE)  
-IS
-    citasTrabajador NUMBER;
-    w_nif citas.nif%TYPE;
-BEGIN
-    SELECT count(fecha), nif INTO citasTrabajador, w_nif FROM citas GROUP BY nif;
-    DBMS_OUTPUT.PUT_LINE('El trabajador con NIF '||w_nif||' ha atendido '||citasTrabajador||' citas');
-    COMMIT;
-END;
-
 /
 
 

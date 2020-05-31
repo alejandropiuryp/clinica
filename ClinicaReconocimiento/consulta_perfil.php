@@ -43,10 +43,11 @@
 <link href="css/perfil.css" rel="stylesheet" type="text/css">
 <script src="js/perfil_usuario.js"></script>
 </head>
-	
-	
-	<body>
-
+<body>
+<?php
+	include_once('menu.php');
+	include_once('cabecera.php');
+?> 
 	
 			<!--Formulario-->
 			<div class="contenedor">

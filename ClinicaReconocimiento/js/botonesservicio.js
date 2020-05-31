@@ -37,7 +37,7 @@ function myButton2() {
       	gruistas.className = "hidden";
 
     } else{
-    	gruistas.className="Deportistas";
+    	gruistas.className="Gruistas";
     }
     
  }  

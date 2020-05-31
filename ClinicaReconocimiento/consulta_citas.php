@@ -4,15 +4,22 @@
 	require_once("gestionBD.php");
 	require_once("paginacion_citas.php");
 	require_once("gestionarCitas.php");
+	require_once("gestionarUsuarios.php");
 	
 	//Si la sesión de usuario no está abierta lo redirigimos al login
-	/*if(!isset($_SESSION['login'])){
+	if(isset($_SESSION['admin'])){
+		$admin=$_SESSION['admin'];
+	}else{
+		$admin="";
+		if(!isset($_SESSION['login'])){
 		
-		header("Location: login.php");
-	} else{
-		$conexion=crearConexionBD();
-		
-	}*/
+			header("Location: login.php");
+		} else{
+			$login=$_SESSION['login'];
+		}		
+	}
+	
+	
 	$conexion=crearConexionBD();
 	if (isset($_SESSION["cita"])){
 
@@ -32,13 +39,12 @@
 		$_SESSION["filtro"] = $filtro;
 	}else{
 		$filtro = $_SESSION["filtro"];
-	
+		
 		if(isset($_SESSION["errores"])){
 			$errores = $_SESSION["errores"];
 			unset($_SESSION["errores"]);
 		}
 	}	
-
 	
 	if (isset($_SESSION["paginacion"])) $paginacion = $_SESSION["paginacion"];
 
@@ -59,31 +65,21 @@
 	// Antes de seguir, borramos las variables de sección para no confundirnos más adelante
 
 	unset($_SESSION["paginacion"]);
-	
-	//Comprobamos si es un administrador del sistema o un cliente 
-	/*if(isset($_SESSION['admin'])) {
-		// La consulta a paginar para un admin
-
-
-	} else {
-		// La consulta a paginar para un cliente
-	 	
-	}*/
 		
-		
-		
-		
-		
-			
 	if(isset($_SESSION["query"])){
 		$query=$_SESSION["query"];
 		unset($_SESSION["query"]);
 	} else {
-		$query="SELECT FECHA, HORA, TIPO_CITA,TIPO_CERTIFICADO, DNI FROM CITAS";
-	
-		
-		
-		
+			//Comprobamos si es un administrador del sistema o un cliente para lo que vamos a devolver por defecto
+		if($admin!="") {
+			$query="SELECT FECHA, HORA, TIPO_CITA,TIPO_CERTIFICADO, DNI FROM CITAS";
+		}else {
+			$email=$login;
+			$usuario=extraerDatosUsuario($conexion, $email);
+			$_SESSION["usuario"]=$usuario;
+			$DNI=$usuario["DNI"];
+			$query="SELECT * FROM CITAS WHERE DNI='$DNI'";			
+		}
 	}
 	
 	// Se comprueba que el tamaño de página, página seleccionada y total de registros son conformes.
@@ -95,7 +91,6 @@
 	if ($total_registros % $pag_tam > 0) $total_paginas++;
 
 	if ($pagina_seleccionada > $total_paginas) $pagina_seleccionada = $total_paginas;
-
 
 
 	// Generamos los valores de sesión para página e intervalo para volver a ella después de una operación
@@ -125,7 +120,10 @@
   <title>Mis Citas</title>
 </head>
 <body>
-
+  		<?php
+		include_once('menu.php');
+		include_once('cabecera.php');
+	?>  	
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#">Filtros:</a>
@@ -133,9 +131,17 @@
   <form id="filtrosConsulta" method="post" action="validacion_filtro.php" onsubmit="return validateForm();">
   
   <div class="filtros">
+  
    <div class="filtroDNI">
-  	<label for="dni" id="labeldni">DNI</label>
-  	<input id="dni" name="dni" type="text" placeholder="DNI"/>
+
+  	<label for="dni" id="labeldni" 
+  	style="<?php if(isset($_SESSION['login'])){
+  		echo "visibility: hidden;";
+			}?>">DNI</label>
+  	<input id="dni" name="dni" type="text" placeholder="DNI" 
+  	style="<?php if(isset($_SESSION['login'])){
+  			echo "visibility: hidden;";
+			}?>" />
   	<small id="smallDni">Error message</small>
   </div>
   
@@ -153,8 +159,8 @@
   </div>
   
 	<div id="filtrosError">
-  	<small id="smallFiltros">Error message</small>
-  </div>
+  		<small id="smallFiltros">Error message</small>
+  	</div>
   
   <button id="filtrar" name="filtrar" type="submit">Filtrar</button>
      <?php 
@@ -176,6 +182,7 @@
 <span class="punteroNav" onclick="openNav()">&nbsp;&#10094;</span>
 
 <main>
+	<div class="contenedor">
 		<nav>
 		<div class="paginacion">
 		<form method="get" action="consulta_citas.php">
@@ -186,9 +193,7 @@
 
 			<input id="PAG_TAM" name="PAG_TAM" type="number"
 
-				min="1" max="<?php echo $total_registros;?>"
-
-				value="<?php echo $pag_tam?>" autofocus="autofocus" />
+				min="1" max="5" step="1" value="<?php echo $pag_tam?>" autofocus="autofocus" />
 
 			entradas de <?php echo $total_registros?>
 
@@ -267,9 +272,7 @@
 
 			<?php } ?>
 		</div>
-
-	
-
+	</div>
 
 </main>
 </body>

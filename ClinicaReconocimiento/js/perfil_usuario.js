@@ -50,7 +50,7 @@ function checkTelefono(){
 
 function checkDomicilio(){
 	const domicilioValue = document.getElementById("domicilio").value.trim();
-	var expresion_regular_domicilio= /^[A,B,C]{1}/[a-zA-Z ']*$/;
+	var expresion_regular_domicilio= /^[A,B,C]{1}\/[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/;
 	if(domicilioValue!=""){
 		if(expresion_regular_domicilio.test(domicilioValue) == false){
 			errorFor(document.getElementById("domicilio"), document.getElementById("smallDomicilio"), 'El domicilio no es correcto');

@@ -8,14 +8,13 @@
 		$cita["DNI"] = $_REQUEST["DNI"];
 		$cita["TIPO_CERTIFICADO"] = $_REQUEST["TIPO_CERTIFICADO"];
 		$_SESSION["cita"] = $cita;
-		/*if(isset($_REQUEST["fechaInicio"], $_REQUEST["fechaFin"])){
-			$fechaInic=$cita["fechaInicio"];
-			$fechaFin=$cita["fechaFin"];
-			$query="SELECT * WHERE FECHA BETWEEN".'$fechaInic'."AND".'$fechaFin'."";
-		}*/
+		
+		
 		if (isset($_REQUEST["eliminar"])) {Header("Location: accion_borrar_cita.php"); }
 		
 	}else 
 		Header("Location: consulta_citas.php");
+	
+	
 
 ?>

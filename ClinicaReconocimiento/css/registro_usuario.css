@@ -12,6 +12,7 @@ body{
 	font-family: 'Raleway', sans-serif;
     width:100%;	
 	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 h1{
@@ -21,7 +22,7 @@ h1{
 }
 .contenedor{
 	position:absolute;
-	top:75%;
+	top:55%;
 	transform: translateY(-50%);
 	width: 100%;
 	padding: 0 20px;
@@ -34,8 +35,7 @@ h1{
 	border-bottom: 0px;
 	background: #39b7dd;
 	padding: 15px;
-	cursor: pointer;
-	
+	cursor: pointer;	
 }
 .columnas{
 	max-width: 670px;
@@ -117,6 +117,7 @@ small{
 a.redireccion {
 	margin-top: 20px;
 	color: white;
+	text-align: center;
 }
 #div_errores{
 	color: red;

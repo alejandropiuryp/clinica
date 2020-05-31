@@ -1,18 +1,22 @@
 
+nav{
+	height:100px;
+	right: 10px;
+}
 nav ul.menu {
   list-style-type: none;
   padding: 0;
   overflow: hidden;
   background-color: rgba(0,0,0,0.8);
-  width: 250px;
   float: right;
   border-radius: 25px;
   border-right:5px solid #27A8F7;
   border-left:5px solid #27A8F7;
   margin-top:20px;
-  margin-right: 50px;
+  margin-right: 20px;
   
 }
+
 
 ul.menu li{
   float: right;
@@ -26,7 +30,7 @@ ul.menu li a, .dropbtn {
   text-decoration: none;
 }
 
-ul.menu li a:hover:not(.active) {background-color: #111;}
+ul.menu li a:hover:not(.active) {background-color: rgba(0,0,0,0.9);}
 ul.menu li.right {float: right;}
 
 @media screen and (max-width: 600px) {
@@ -65,4 +69,7 @@ ul.menu li.right {float: right;}
 
 .menu .dropdown:hover .dropdown-content {
   display:block
+}
+#icon{
+  margin-right:15px;
 }

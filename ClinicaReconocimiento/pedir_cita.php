@@ -1,11 +1,16 @@
 <?php
 	session_start();
 	require_once("gestionBD.php");
-	
+	if(!isset($_SESSION['login'])){
+		
+		header("Location: login.php");
+	}
 	if(!isset($_SESSION["reqCita"])){
 		$reqCita['tipoCertificado'] = "";
+		$reqCita['opcionesCertificado'] = "";
 		$reqCita['fechaCita'] = "";
 		$reqCita['horaCita'] = "";
+		
 
 		
 		$_SESSION["reqCita"] = $reqCita;
@@ -15,8 +20,8 @@
 	if(isset($_SESSION["errores"])){
 			$errores = $_SESSION["errores"];
 			unset($_SESSION["errores"]);
+		}
 	}
-}
 	
 	
 ?>
@@ -32,25 +37,25 @@
 
   <title>Citas online</title>
 </head>
-		<?php
-		include_once('menu.php');
-		include_once('cabecera.php');
-	?>
+
 <body>
-    		
+<?php
+	include_once('menu.php');
+	include_once('cabecera.php');
+?>  		
 	<div class="contenedor">
 
-				<div class="titulo">
-				<h1>Pide tu cita</h1>
-				</div>	
-				<!--Formulario-->
-				<div class="form">
+		<div class="titulo">
+			<h1>Pide tu cita</h1>
+		</div>	
+		<!--Formulario-->
+			<div class="form">
 				<form id="citaUsuario" method="get" action="validacion_cita.php" onsubmit="return validateForm()">	
 					<div class="columnas">	
 						<div class = "datos_cita">
 						<label for="tipoCertificado" id="labelCertificado">Tipo de certificado:</label>
-						<input id="tipoCertificado" name="tipoCertificado" type="text" list="opcionesCertificado"  size="20" value = "<?php echo $reqCita['tipoCertificado'];?>" />
-							<datalist id="opcionesCertificado">
+						<input id="tipoCertificado" name="tipoCertificado" type="text"  list="opcionesCertificado"  size="20" value = "<?php echo $reqCita['tipoCertificado'];?>"/>
+							<datalist id="opcionesCertificado" name="opcionesCertificado" value = "<?php echo $reqCita['opcionesCertificado'];?>">
 							<!-- Aquí se añadirán con AJAX los tipos de certificados -->
 							
 							</datalist><br>
@@ -85,10 +90,10 @@
 						?>
 						</div>
 					</div>						
-					<input id="enviar" type="submit"  value="Confirmar cita">
-				</form>
-			</div>
+				<input id="enviar" type="submit"  value="Confirmar cita">
+			</form>
+		</div>
 	</div>
 	
-	</body>
+</body>
 </html>

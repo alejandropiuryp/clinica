@@ -32,12 +32,10 @@
 		<script src="js/registro_usuario.js" type="text/javascript"></script>
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js" type="text/javascript"></script>
 	</head>
+	<body>
 <?php
-	include_once('menu.php');
 	include_once('cabecera.php');
 ?>
-	<body>
-
 	
 			<!--Formulario-->
 			<div class="contenedor">
@@ -53,7 +51,7 @@
 								<small id="smallApellidos">Error message</small> 
 								<input type="date" id="fecha" name="fecha" value = "<?php echo $registro['fecha'];?>" placeholder= "Fecha de nacimiento"  />
 								<small id="smallFecha">Error message</small>
-								<input type="number" id="edad" name="edad" value = "<?php echo $registro['edad'];?>" max="150" placeholder="Edad"  />
+								<input type="number" id="edad" name="edad" value = "<?php echo $registro['edad'];?>" min="0" max="150" step="1" placeholder="Edad"  />
 								<small id="smallEdad">Error message</small>
 								<input type="text" id="dni" name="dni"  value = "<?php echo $registro['dni'];?>" placeholder="DNI"  />
 								<small id="smallDni">Error message</small>

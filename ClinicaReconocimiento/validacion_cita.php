@@ -1,22 +1,23 @@
 <?php
     session_start();
+	require_once("gestionBD.php");
+    require_once("gestionar_tipo_certificados.php");
 	
 	if(isset($_SESSION["reqCita"])){
 		$reqCita["tipoCertificado"] = $_REQUEST["tipoCertificado"];
 		$reqCita["fechaCita"] = $_REQUEST["fechaCita"];
 		$reqCita["horaCita"] = $_REQUEST["horaCita"];
 		$_SESSION["reqCita"] = $reqCita;
+		
 	}else{
 		Header("Location: pedir_cita.php");
 	}
-	
 	$errores = validarDatosCita($reqCita);
-	
 	if(count($errores) > 0){
 		$_SESSION["errores"] = $errores;
 		Header("Location: pedir_cita.php");
 	}else{
-		Header("Location: exito_cita.php");    //MANDAR AL INICIO
+		Header("Location: controlador_pedirCita.php");   
 	}
 	
 ///////////////////////////////////////////////////////////
@@ -24,11 +25,27 @@
 ///////////////////////////////////////////////////////////
 
 function validarDatosCita($reqCita){
+
+	
 	$errores = array();
 	//Validación del tipo de cita
 	if($reqCita["tipoCertificado"] == ""){
 		$errores[] = "<p>El tipo de certificado no puede estar vacío.</p>";
+	}else{
+		$conexion=crearConexionBD();
+		$tipos=listarTiposCertificados($conexion);
+		$encontrado=FALSE;
+		foreach($tipos as $t){
+			if($t["TIPO"]==$reqCita["tipoCertificado"]){
+				$encontrado=TRUE;
+			};
+		}
+		if($encontrado==FALSE){
+			$errores[] = "<p>Seleccione un tipo predefinido.</p>";
+		}
+		cerrarConexionBD($conexion);		
 	}
+	
 	//Validación de la fecha
 	$fecha=strtotime($reqCita["fechaCita"]);
 	$dia = date('w', $fecha);

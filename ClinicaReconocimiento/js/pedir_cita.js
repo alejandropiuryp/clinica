@@ -5,7 +5,6 @@ function validateForm(){
 		var error1 = checkTipoCita();
 		var error2 = checkFecha();
 		var error3 = checkHora();
-	
 		return (error1.length == 0) && (error2.length == 0) && (error3.length == 0);
 	}else{
 		return true;
@@ -17,13 +16,13 @@ function checkTipoCita(){
 	const tipoCita = document.getElementById("tipoCertificado").value.trim();
 	if (tipoCita==""){
 		errorFor(document.getElementById("tipoCertificado"), document.getElementById("smallTipo"), 'El tipo no puede estar vacío');
-		var error = "El tipo de cita no puede estar vacío";
+		var error = "El tipo de cita no puede estar vacío";		
 	}else{
 		exitoFor(document.getElementById("tipoCertificado"),document.getElementById("smallTipo"));
 		var error = "";
 	}
 	return error;
-}
+	}
 	
 function checkFecha(){
 	const fecha = document.getElementById("fechaCita").value.trim();
@@ -83,9 +82,7 @@ function exitoFor(input, small){
 	small.className = "";
 }
 
-function errorServer(){
-	alert("hola");
-}	
+
 		
 		
 	
